@@ -1,4 +1,6 @@
 package com.ecommerce.ecommerce_api.service;
 
-public interface UserServiceInterface {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserServiceInterface extends JpaRepository<> {
 }
