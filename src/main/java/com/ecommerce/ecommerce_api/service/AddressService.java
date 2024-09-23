@@ -1,4 +1,7 @@
 package com.ecommerce.ecommerce_api.service;
 
-public class AddressService {
+import org.springframework.stereotype.Service;
+
+@Service
+public class AddressService implements AddressServiceInterface{
 }
