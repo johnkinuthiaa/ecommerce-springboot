@@ -30,15 +30,14 @@ public class ProductController {
     public Products saveProduct(@RequestBody Products product,@PathVariable@RequestParam Integer id) {
         return service.saveProduct(product,id);
     }
-    @PutMapping("/update/product/{id}")
-    public Products update(@RequestBody Products product,@PathVariable@RequestParam Integer id) {
+    @PutMapping("/update/product")
+    public Products update(@RequestBody Products product,@RequestParam Integer id) {
         return service.update(product,id);
     }
-    @DeleteMapping("/delete-product/{id}")
-    public void deleteProduct(@PathVariable @RequestParam Integer id) {
+    @DeleteMapping("/delete-product")
+    public void deleteProduct(@RequestParam Integer id) {
         service.deleteProduct(id);
     }
-
 
     public List<Products> getProductsByCategory(String category) {
         return List.of();
