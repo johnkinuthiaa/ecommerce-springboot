@@ -2,10 +2,7 @@ package com.ecommerce.ecommerce_api.controller;
 
 import com.ecommerce.ecommerce_api.model.Products;
 import com.ecommerce.ecommerce_api.service.ProductServiceInterface;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,29 +18,25 @@ public class ProductController {
     public List<Products> getAllProducts() {
         return service.getAllProducts();
     }
-
-    public void addProductToCatalog(Products product, Integer id) {
-
+    @PostMapping("/add/products")
+    public Products addProductToCatalog(@RequestBody Products product) {
+        return service.addProductToCatalog(product);
     }
-
-
-    public Products getProductById(Integer id) {
-        return null;
+    @GetMapping("/product/{id}")
+    public Products getProductById(@PathVariable Integer id) {
+        return service.getProductById(id);
     }
-
-
-    public Products saveProduct(Products product, Integer id) {
-        return null;
+    @PutMapping("/saved-product/{id}")
+    public Products saveProduct(@RequestBody Products product,@PathVariable@RequestParam Integer id) {
+        return service.saveProduct(product,id);
     }
-
-
-    public Products update(Products product, Integer id) {
-        return null;
+    @PutMapping("/update/product/{id}")
+    public Products update(@RequestBody Products product,@PathVariable@RequestParam Integer id) {
+        return service.update(product,id);
     }
-
-
-    public void deleteProduct(Products products, Integer id) {
-
+    @DeleteMapping("/delete-product/{id}")
+    public void deleteProduct(@PathVariable @RequestParam Integer id) {
+        service.deleteProduct(id);
     }
 
 

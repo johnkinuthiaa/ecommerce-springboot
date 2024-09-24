@@ -1,4 +1,8 @@
 package com.ecommerce.ecommerce_api.service;
 
-public class CartService {
+import org.springframework.stereotype.Service;
+
+@Service
+public class CartService implements CartItemServiceInterface{
+
 }
