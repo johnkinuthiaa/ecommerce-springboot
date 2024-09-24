@@ -22,7 +22,7 @@ public class ProductService implements ProductServiceInterface{
     @Override
     public void addProductToCatalog(Products product,Integer id) throws ItemAlreadyExistException {
         if(productRepository.existsById(id)){
-            throw new ItemAlreadyExistException("Product cannot be updated since it already exists");
+            throw new ItemAlreadyExistException("Product cannot be added to catalog since it already exists");
         }else {
             productRepository.save(product);
         }
@@ -38,7 +38,7 @@ public class ProductService implements ProductServiceInterface{
     }
 
     @Override
-    public Products saveProduct(Products product,Integer id) {
+    public Products saveProduct(Products product,Integer id) throws ItemAlreadyExistException{
         if(productRepository.existsById(id)){
             throw new ItemAlreadyExistException("Product cannot be updated since it already exists");
         }else {
@@ -56,12 +56,23 @@ public class ProductService implements ProductServiceInterface{
     }
 
     @Override
-    public String deleteProduct(Integer id) {
-        return "";
+    public void deleteProduct(Products product,Integer id) throws ProductNotFoundException{
+        if(productRepository.findById(id).isPresent()){
+            productRepository.delete(product);
+        }else{
+            throw new ProductNotFoundException("cannot delete product since it does not exist");
+        }
+//        return "";
     }
 
     @Override
     public List<Products> getProductsByCategory(String category) {
-        return List.of();
+        List<Products> list =productRepository.findAll();
+        if (!list.isEmpty()){
+            return list;
+        }
+        else{
+            return null;
+        }
     }
 }
