@@ -3,7 +3,7 @@ package com.ecommerce.ecommerce_api.service;
 import com.ecommerce.ecommerce_api.exeptions.CustomerNotFoundException;
 import com.ecommerce.ecommerce_api.model.Customer;
 import com.ecommerce.ecommerce_api.repository.CustomerRepository;
-import jakarta.persistence.criteria.CriteriaBuilder;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,9 +40,9 @@ public class CustomerService implements CustomerServiceInterface{
         return customerRepository.save(customer);
     }
     @Override
-    public void deleteCustomer(Customer customer,Integer id){
+    public void deleteCustomer(Integer id){
         if(customerRepository.findById(id).isPresent()){
-            customerRepository.delete(customer);
+            customerRepository.deleteById(id);
         }else{
             throw new RuntimeException();
         }

@@ -9,6 +9,6 @@ public interface CustomerServiceInterface {
     Customer getCustomerById(Integer id);
     Customer updateCustomersDetails(Customer customer,Integer id);
     Customer addNewCustomer(Customer customer,Integer id);
-    void deleteCustomer(Customer customer,Integer id);
+    void deleteCustomer(Integer id);
 
 }

@@ -14,7 +14,7 @@ public class Customer {
     private String mobileNo;
     private String emailId;
     private String password;
-    private LocalDate createdOn;
+//    private LocalDate createdOn;
     private Long creditCardNumber;
 
     public Customer(){}
@@ -32,7 +32,7 @@ public class Customer {
         this.mobileNo=mobileNo;
         this.emailId=emailId;
         this.password=password;
-        this.createdOn=createdOn;
+//        this.createdOn=createdOn;
         this.creditCardNumber=creditCardNumber;
     }
     public void setCustomerId(Integer customerId){
@@ -71,12 +71,12 @@ public class Customer {
     public String getPassword(){
         return password;
     }
-    public void setCreatedOn(LocalDate createdOn){
-        this.createdOn=createdOn;
-    }
-    public LocalDate getCreatedOn(){
-        return this.createdOn;
-    }
+//    public void setCreatedOn(LocalDate createdOn){
+//        this.createdOn=createdOn;
+//    }
+//    public LocalDate getCreatedOn(){
+//        return this.createdOn;
+//    }
     public void setCreditCardNumber(Long creditCardNumber){
         this.creditCardNumber=creditCardNumber;
     }

@@ -27,12 +27,12 @@ public class CustomerController {
         return customerService.updateCustomersDetails(customer,id);
     }
     @PostMapping("/add-new")
-    public Customer addNewCustomer(Customer customer, Integer id){
+    public Customer addNewCustomer(@RequestBody Customer customer,@RequestParam Integer id){
         return customerService.addNewCustomer(customer,id);
     }
     @DeleteMapping("/delete-customer")
-    public void deleteCustomer(Customer customer,Integer id){
-        customerService.deleteCustomer(customer,id);
+    public void deleteCustomer(@RequestParam Integer id){
+        customerService.deleteCustomer(id);
     }
 
 }
