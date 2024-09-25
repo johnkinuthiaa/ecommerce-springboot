@@ -4,7 +4,7 @@ import jakarta.persistence.Id;
 
 public class CartItem {
     @Id
-    private Integer cardItemId;
+    private Integer cartItemId;
     private Products cartItemProduct;
     private Double cartItemQuantity;
 }

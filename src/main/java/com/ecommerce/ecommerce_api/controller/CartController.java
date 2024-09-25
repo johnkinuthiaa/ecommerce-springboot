@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/v1/cart")
 public class CartController {
     private final CartServiceInterface cartServiceInterface;
 
@@ -27,8 +27,8 @@ public class CartController {
     public void clearCart(){
         cartServiceInterface.clearCart();
     }
-    @PostMapping("/add/item/{id}")
-    public Cart addItemToCart(@RequestBody Cart cart, @PathVariable Long id){
+    @PostMapping("/add/item")
+    public Cart addItemToCart(@RequestBody Cart cart,@RequestParam Long id){
         return cartServiceInterface.addItemToCart(cart,id);
     }
 

@@ -11,8 +11,8 @@ public class Cart {
     private Double totalPrice;
 
     public Cart(){}
-    public Cart(Long cardId,String itemInCart,Double totalPrice){
-        this.cartId =cardId;
+    public Cart(Long cartId,String itemInCart,Double totalPrice){
+        this.cartId =cartId;
         this.itemInCart=itemInCart;
         this.totalPrice=totalPrice;
     }
