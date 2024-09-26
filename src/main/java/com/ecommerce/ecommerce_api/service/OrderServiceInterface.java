@@ -1,6 +1,8 @@
 package com.ecommerce.ecommerce_api.service;
 
 
+import com.ecommerce.ecommerce_api.model.Order;
+
 import java.util.List;
 
 public interface OrderServiceInterface {
