@@ -1,8 +1,6 @@
 package com.ecommerce.ecommerce_api.service;
 
 import com.ecommerce.ecommerce_api.model.Products;
-import org.springframework.stereotype.Service;
-
 
 import java.util.List;
 
