@@ -1,7 +1,6 @@
 package com.ecommerce.ecommerce_api.service;
 
 import com.ecommerce.ecommerce_api.model.Products;
-
 import java.util.List;
 
 public interface ProductServiceInterface {
