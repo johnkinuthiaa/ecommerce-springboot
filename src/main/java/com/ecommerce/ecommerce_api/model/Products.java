@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Products {
     @Id
-//    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer productId;
     private String productName;
     private Double price;
@@ -19,20 +19,13 @@ public class Products {
 
     public Products(){}
 
-    public Products(Integer productId,String productName,Double price,String description,String manufacturer,Integer quantity,String category){
-        this.productId=productId;
+    public Products(String productName,Double price,String description,String manufacturer,Integer quantity,String category){
         this.productName=productName;
         this.price=price;
         this.description=description;
         this.manufacturer=manufacturer;
         this.quantity=quantity;
         this.category=category;
-    }
-    public void setProductId(Integer productId){
-        this.productId=productId;
-    }
-    public Integer getProductId(){
-        return productId;
     }
     public void setProductName(String productName){
         this.productName=productName;

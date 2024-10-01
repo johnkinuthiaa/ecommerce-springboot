@@ -34,9 +34,10 @@ public class SellerService implements SellerServiceInterface{
     @Override
     public Seller updateSeller(Seller seller,Long id){
         if(repository.findById(id).isEmpty()){
-            throw new RuntimeException("seller does not exists");
+            throw new RuntimeException("todo does not exist");
+        } else if (repository.findById(id).isPresent()) {
+            repository.deleteById(id);
         }
-
         return repository.save(seller);
     }
     @Override

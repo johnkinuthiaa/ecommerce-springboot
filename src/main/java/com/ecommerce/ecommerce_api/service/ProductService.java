@@ -7,6 +7,8 @@ import com.ecommerce.ecommerce_api.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService implements ProductServiceInterface{
@@ -29,6 +31,18 @@ public class ProductService implements ProductServiceInterface{
 //
 //        }
     }
+    @Override
+    public List<Products> getProductByManufacturer(String manufacturer){
+        return productRepository.findAll().stream()
+                .filter(products->products.getManufacturer().toLowerCase().contains(manufacturer.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+    @Override
+    public List<Products> getProductByCategory(String category){
+        return productRepository.findAll().stream()
+                .filter(products -> products.getCategory().toLowerCase().contains(category.toLowerCase()))
+                .collect(Collectors.toList());
+    }
 
     @Override
     public Products getProductById(Integer id) throws ProductNotFoundException{
@@ -36,6 +50,12 @@ public class ProductService implements ProductServiceInterface{
             throw new ProductNotFoundException("no products with"+ id+" was found");
         }
         return productRepository.findById(id).orElse(null);
+    }
+    @Override
+    public List<Products> getProductByName(String name){
+        return productRepository.findAll().stream()
+                .filter(products -> products.getProductName().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -49,7 +69,9 @@ public class ProductService implements ProductServiceInterface{
     @Override
     public Products update(Products product,Integer id) throws  ProductNotFoundException{
         if(productRepository.findById(id).isEmpty()){
-            throw new ProductNotFoundException("Product with given id not found ");
+            throw new RuntimeException("todo does not exist");
+        } else if (productRepository.findById(id).isPresent()) {
+            productRepository.deleteById(id);
         }
         return productRepository.save(product);
     }
@@ -63,14 +85,4 @@ public class ProductService implements ProductServiceInterface{
         }
     }
 
-    @Override
-    public List<Products> getProductsByCategory(String category) throws ProductNotFoundException{
-        List<Products> list =productRepository.findAll();
-        if (!list.isEmpty()){
-            return list;
-        }
-        else{
-            throw new ProductNotFoundException("no item of category"+category+" was found");
-        }
-    }
 }

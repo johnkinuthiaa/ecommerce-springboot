@@ -29,7 +29,9 @@ public class OrderService implements OrderServiceInterface{
     @Override
     public Orders updateOrder(Orders orders, Long id) {
         if(repository.findById(id).isEmpty()){
-            throw new RuntimeException("order not found");
+            throw new RuntimeException("todo does not exist");
+        } else if (repository.findById(id).isPresent()) {
+            repository.deleteById(id);
         }
         return repository.save(orders);
     }

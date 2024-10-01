@@ -7,6 +7,7 @@ import com.ecommerce.ecommerce_api.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerService implements CustomerServiceInterface{
@@ -28,7 +29,9 @@ public class CustomerService implements CustomerServiceInterface{
     @Override
     public Customer updateCustomersDetails(Customer customer,Integer id)throws CustomerNotFoundException {
         if(customerRepository.findById(id).isEmpty()){
-            throw new CustomerNotFoundException();
+            throw new RuntimeException("todo does not exist");
+        } else if (customerRepository.findById(id).isPresent()) {
+            customerRepository.deleteById(id);
         }
         return customerRepository.save(customer);
     }
@@ -46,6 +49,12 @@ public class CustomerService implements CustomerServiceInterface{
         }else{
             throw new RuntimeException();
         }
+    }
+    @Override
+    public List<Customer> getCustomerByName(String name){
+        return customerRepository.findAll().stream()
+                .filter(customer ->customer.getFirstName().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
     }
 
 }
