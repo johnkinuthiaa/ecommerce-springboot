@@ -5,6 +5,7 @@ import com.ecommerce.ecommerce_api.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService implements OrderServiceInterface{
@@ -28,12 +29,15 @@ public class OrderService implements OrderServiceInterface{
 
     @Override
     public Orders updateOrder(Orders orders, Long id) {
-        if(repository.findById(id).isEmpty()){
+        Optional<Orders> current =repository.findById(id);
+        if(current.isEmpty()){
             throw new RuntimeException("todo does not exist");
-        } else if (repository.findById(id).isPresent()) {
-            repository.deleteById(id);
         }
-        return repository.save(orders);
+        Orders toUpdate =current.get();
+        toUpdate.setCreditCardNumber(orders.getCreditCardNumber());
+        toUpdate.setStatus(orders.getStatus());
+        toUpdate.setTotal(orders.getTotal());
+        return repository.save(toUpdate);
     }
 
     @Override

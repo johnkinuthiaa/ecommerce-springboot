@@ -11,21 +11,25 @@ public class Customer {
     private Integer customerId;
     private String firstName;
     private String lastName;
+    private String username;
     private String mobileNo;
     private String emailId;
     private String password;
 //    private LocalDate createdOn;
     private Long creditCardNumber;
+    private String role;
 
     public Customer(){}
     public Customer(Integer customerId,
                     String firstName,
                     String lastName,
+                    String username,
                     String mobileNo,
                     String emailId,
                     String password,
                     LocalDate createdOn,
-                    Long creditCardNumber){
+                    Long creditCardNumber,
+                    String role){
         this.customerId=customerId;
         this.firstName=firstName;
         this.lastName=lastName;
@@ -83,6 +87,18 @@ public class Customer {
     public Long getCreditCardNumber(){
         return creditCardNumber;
     }
+    public void setRole(String role){
+        this.role=role;
+    }
 
+    public String getRole() {
+        return role;
+    }
+    public void setUsername(String username){
+        this.username=username;
+    }
 
+    public String getUsername() {
+        return username;
+    }
 }
